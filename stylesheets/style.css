@@ -1,0 +1,93 @@
+body {
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+}
+
+h1{
+	font-family: Helvetica;
+	text-shadow: rgb(204, 204, 204) 2px 2px 2px;
+}
+
+#done ul,
+#open ul {
+	padding-left: 1em;
+	list-style: none;
+}
+
+a {
+	color: #E00;
+	text-decoration:none;
+}
+
+a:hover {
+	color: #E00;
+	text-decoration:underline;
+}
+
+a.back {
+	font-size: small;
+	position: relative;
+	top: -1.5em;
+}
+
+ul.lists a {
+	color: #00F;
+	text-decoration:underline;
+	font-weight:bold;
+}
+
+ul.lists a:hover {
+	color: #FFF;
+	background: #00F;
+	text-decoration:none;
+}
+
+ul.lists li small {
+	margin-left: 0em;
+}
+
+ul.lists li small a {
+	color: #E00;
+	font-weight: normal;
+	text-decoration:none;
+}
+
+ul.lists li small a:hover {
+	color: #E00;
+	background: #FFF;
+	text-decoration:underline;
+}
+
+
+li {
+	font-size: large;
+}
+
+li small{
+	margin-left: 2.5em;
+	font-size: x-small;
+	color: #666;
+	position: relative;
+	top: -0.7em;
+}
+
+#done li,
+#done li small {
+	color: #999;
+}
+
+li small a {
+	font-size: x-small;
+}
+
+.form {
+	margin-left: 1em;
+	padding: 1.3em;
+	border: 2px solid rgb(103, 167, 227);
+	background-color: rgb(214, 233, 248);
+	width: 30em;
+}
+
+#top {
+	background: rgb(103, 167, 227);
+	color: #FFF;
+}

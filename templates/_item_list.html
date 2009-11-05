@@ -1,0 +1,15 @@
+<ul>
+{% for item in items %}
+	<li>
+		{% if done %}
+			<input type="checkbox" name="done" value="done" checked="checked" onChange="new Ajax.Updater('open', '/checkitem', { parameters: { key: '{{ item.key }}', done: 'false' }}); $(this).up().hide();">
+			{{ item.text|escape }}<br />
+			<small>erledigt am {{ item.date|date:"d.m.Y \u\m H:m:s" }} Uhr - <a href="/deleteitem?key={{ item.key }}">löschen</a></small>
+		{% else %}
+			<input type="checkbox" name="done" value="done" onChange="new Ajax.Updater('done', '/checkitem', { parameters: { key: '{{ item.key }}', done: 'true' }}); $(this).up().hide();">
+			{{ item.text|escape }}<br />
+			<small>angelegt am {{ item.date|date:"d.m.Y \u\m H:m:s" }} Uhr - <a href="/deleteitem?key={{ item.key }}">löschen</a></small>
+		{% endif %}
+	</li>
+{% endfor %}
+</ul>
