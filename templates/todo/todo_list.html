@@ -1,0 +1,70 @@
+{% extends "../_base.htm" %} 
+
+
+{% block css %}
+<link href="../scripts/yaml/screen/forms.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+
+{% block col1_content %}
+<div class="info">
+    <h3>Hinweise</h3>
+    <p>Hier können Listenelemente erstellt werden.</p>
+</div>
+{% endblock %}
+
+
+{% block bodycontent %}
+	<h2>Liste: {{ list.name|escape }}</h2>
+	<hr />
+	<a href="/todo" class="back">zurück zu den Listen</a>
+	<br /><br />
+	 <div id ="open">
+	     <ul>
+	     {% for item in open_items %}
+	         <li>
+	             <input type="checkbox" name="done" value="done" onChange="new Ajax.Updater('done', '/todo/checkitem', { parameters: { key: '{{ item.key }}', done: 'true' }}); $(this).up().hide();" />
+	             {{ item.text|escape }}<br />
+	             <small>angelegt am {{ item.date|date:"d.m.Y \u\m H:m:s" }} Uhr <q>- <a href="/todo/deleteitem?key={{ item.key }}">löschen</a></q></small>
+	         </li>
+	   {% endfor %}
+	     </ul>
+	 </div>
+	 <br /><br />
+	 <div class="form">
+	 <form action="/todo/list" method="post">
+	     <input type="hidden" name="list_key" value="{{ list.key }}" />
+	     <div>
+	     
+	     
+	 </form>
+	 </div>
+	
+	<div class="form">
+		<form action="/todo/list" method="post" class="yform" role="application">
+			<input type="hidden" name="list_key" value="{{ list.key }}" />
+			<fieldset>
+				<div class="type-text">
+					<input type="text" name="text" size="44" />
+				</div>
+				<div class="type-button">
+					<input type="submit" value="Neuen Punkt hinzufügen"></div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<br /><br />
+	 <!-- End: Form -->
+	 <div id="done">
+	     <ul>
+	     {% for item in done_items %}
+	     <li>
+	         <input type="checkbox" name="done" value="done" checked="checked" onChange="new Ajax.Updater('open', '/todo/checkitem', { parameters: { key: '{{ item.key }}', done: 'false' }}); $(this).up().hide();" />
+	         {{ item.text|escape }}<br />
+	         <small>erledigt am {{ item.date|date:"d.m.Y \u\m H:m:s" }} Uhr - <a href="/todo/deleteitem?key={{ item.key }}">löschen</a></small>
+	     </li>
+	   {% endfor %}
+	     </ul>
+	 </div>
+	 <!-- End: Done -->
+{% endblock %}

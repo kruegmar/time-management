@@ -1,12 +1,24 @@
-application: todolist
-version: 1
+application: time-management
+version: 2
 runtime: python
 api_version: 1
 
 handlers:
-- url: /scripts
-  static_dir: scripts
-- url: /stylesheets
-  static_dir: stylesheets
-- url: .*
-  script: main.py
+  - url: /favicon.ico
+    static_files: favicon.ico
+    upload: favicon.ico
+  - url: /scripts
+    static_dir: scripts
+  - url: /css
+    static_dir: css
+  - url: /images
+    static_dir: images
+  - url: /todo.*
+    script: ./moduls/todo.py
+    login: required
+  - url: .*
+    script: main.py
+    login: required
+
+builtins:
+  - datastore_admin: on
